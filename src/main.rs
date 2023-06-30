@@ -1,6 +1,9 @@
+#![no_std]
 use gtk::{Application, ApplicationWindow, Button, Label, Box, Orientation};
 use gtk::prelude::*;
 use rand::random;
+
+
 
 fn main() {
     let app = Application::builder()
