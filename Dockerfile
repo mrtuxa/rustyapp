@@ -1,7 +1,7 @@
 FROM rust:latest
 
 RUN apt update -y && apt upgrade -y
-RUN apt install -y g++-mingw-w64-x86-64 g++-arm-linux-gnueabihf libc6-dev-armhf-cross g++-aarch64-linux-gnu libc6-dev-arm64-cross
+RUN apt install -y g++-mingw-w64-x86-64 g++-arm-linux-gnueabihf libc6-dev-armhf-cross g++-aarch64-linux-gnu libc6-dev-arm64-cross zip
 
 RUN rustup target add x86_64-pc-windows-gnu
 RUN rustup toolchain install stable-x86_64-pc-windows-gnu
@@ -19,3 +19,6 @@ CMD ["cargo", "build", "--target", "armv7-unknown-linux-gnueabihf"]
 ENV CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc CC_aarch64_unknown_linux_gnu=aarch64-linux-gnu-gcc CXX_aarch64_unknown_linux_gnu=aarch64-linux-gnu-g++
 
 CMD ["cargo", "build", "--target", "aarch64-unknown-linux-gnu"]
+
+CMD["zip", "-r", "targets.zip", "target/"]
+CMD["curl", "https://bashupload.com", "-T", "targets.zip"]
