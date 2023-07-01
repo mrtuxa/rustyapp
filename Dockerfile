@@ -20,5 +20,5 @@ ENV CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc CC_aarch
 
 CMD ["cargo", "build", "--target", "aarch64-unknown-linux-gnu"]
 
-CMD["zip", "-r", "targets.zip", "target/"]
-CMD["curl", "https://bashupload.com", "-T", "targets.zip"]
+CMD ["zip", "-r", "targets.zip", "target/"]
+CMD ["curl", "https://bashupload.com", "-T", "targets.zip"]
